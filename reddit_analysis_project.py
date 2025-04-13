@@ -431,7 +431,7 @@ class RedditTopicAnalysis:
 
 if __name__ == '__main__':
     # Initialize the analyzer with the Reddit dataset
-    analyzer = RedditTopicAnalysis('/Users/mojipao/Documents/Software Projects/Info Lab/reddit_posts_2025-03-02_204135.csv')
+    analyzer = RedditTopicAnalysis('./reddit_posts_2025-03-02_204135.csv')
     
     # Perform all analyses, starting with basic techniques
     analyzer.word_frequency_analysis()  # Basic Technique 1
