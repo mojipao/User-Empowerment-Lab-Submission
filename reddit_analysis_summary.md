@@ -28,7 +28,7 @@ This project analyzed Reddit posts using various text analysis and topic modelin
 9. Personal struggles (im, dont, feel, cant)
 10. Art and creativity (art, artists, artist)
 
-**Example Posts**: For each topic cluster, we identified representative posts that illustrate the theme.
+**Example Posts**: For each topic cluster, I identified representative posts that illustrate the theme.
 
 ## 3. Word2Vec + HDBSCAN Clustering
 
