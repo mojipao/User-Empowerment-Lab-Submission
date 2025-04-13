@@ -74,5 +74,3 @@ venv.bak/
 # Mac specific
 .DS_Store
 
-# Generated results
-reddit_analysis_results/ 
