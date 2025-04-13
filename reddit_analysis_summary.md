@@ -1,120 +1,100 @@
-# Reddit Topic Analysis Summary
+# Reddit Post Analysis - Project Summary
 
-## Method Summaries
+This project analyzed Reddit posts using various text analysis and topic modeling techniques, from simple word frequency analysis to advanced methods like BERTopic and Latent Dirichlet Allocation (LDA).
 
-### 1. Word Frequency Analysis
+## 1. Word Frequency Analysis
 
-**Method Description**: Simple counting and visualization of word occurrences across all Reddit posts.
-
-**Topics Found**:
-- Common emotional expressions: "like", "feel", "want"
-- Personal references: "people", "know", "get"
-- Time and quantity references: "one", "time"
-
-**Example Posts**:
-- "I feel a disconnect with the society. People dont want to listen to me, Is it wrong if I turn to tech to help me out?"
-- "I hate my phone's 'suggestions.'"
-- "After the pandemic. What habit that still affects you 'til now?"
-
-### 2. TF-IDF + K-Means Clustering
-
-**Method Description**: Uses TF-IDF to weight words based on importance in documents versus the corpus, then applies K-Means to group similar posts.
+**Method**: Counted and visualized the most common words in the Reddit posts.
 
 **Topics Found**:
-- General discussion (Keywords: you, your, are, we, they)
-- Emotional expression (Keywords: feel, don't, this, know)
-- Social commentary (Keywords: are, they, people, this, be)
-- Work/career related (Keywords: was, had, this, job, been)
-- French language content (Keywords: je, de, que, et, en)
-- Family relationships (Keywords: she, her, was, we, mom)
-- Friendships (Keywords: him, friend, was, talk, them)
-- Male-focused topics (Keywords: he, him, his, was, we)
-- Personal struggles (Keywords: im, dont, feel, cant, its)
-- Art and creativity (Keywords: art, you, artists, people, artist)
+- Most frequent words were "like," "dont," "people," "even," "know," "get," "feel," "one," "time," and "want"
+- These common words suggest that Reddit posts often express personal opinions, feelings, and questions
 
-**Example Posts**:
-- "I'm sick of everyone's advice on my resume" (General discussion)
-- "I am completely exhausted by life and society." (Emotional expression)
-- "What's the deal with AI 'enhanced' photos?" (Art/Technology topic)
+**Visualizations**: Word clouds and bar charts showing the distribution of the most common terms.
 
-### 3. Word2Vec + HDBSCAN Clustering
+## 2. TF-IDF + K-Means Clustering
 
-**Method Description**: Uses word embeddings to capture semantic relationships, then applies density-based clustering to find natural groupings.
+**Method**: Used TF-IDF (Term Frequency-Inverse Document Frequency) to weight words based on their importance, then clustered posts using K-Means algorithm.
 
 **Topics Found**:
-- English language content (Keywords: ai, like, people, even, know)
-- French language content (Keywords: je, de, que, et, ai)
+1. General discussion topics (you, your, we, they, people)
+2. Emotional expressions (feel, don't, know)
+3. Social commentary (people, be, what, fucking)
+4. Work/career related (job, been, at, all)
+5. French language content (je, de, que, et)
+6. Family relationships (she, mom, about)
+7. Friendships (friend, friends, talk, them)
+8. Male-focused topics (he, him, his)
+9. Personal struggles (im, dont, feel, cant)
+10. Art and creativity (art, artists, artist)
 
-**Example Posts**:
-- "I'm sick of digital currency making people rich by playing on computers while The poor get poorer working everyday."
-- "UI/UX Design Decline"
-- "Mon copain n'est plus du tout sûr de ses sentiments et j'en souffre énormément !!"
+**Example Posts**: For each topic cluster, we identified representative posts that illustrate the theme.
 
-### 4. BERTopic Analysis
+## 3. Word2Vec + HDBSCAN Clustering
 
-**Method Description**: Advanced method using contextual embeddings from BERT with dimensionality reduction and clustering.
-
-**Topics Found**:
-- English language content (Keywords: to, and, the, it, of)
-- French language content (Keywords: je, de, que, et, en)
-
-**Example Posts**:
-- Various English posts covering technology, relationships, and personal reflections
-- French language posts with similar diverse topics
-
-### 5. Latent Dirichlet Allocation (LDA)
-
-**Method Description**: Probabilistic topic modeling that represents documents as mixtures of topics and topics as distributions over words.
+**Method**: Used Word2Vec to convert words into semantic vector representations, then applied HDBSCAN clustering to group similar posts.
 
 **Topics Found**:
-- General emotions (Keywords: like, know, want, even, get)
-- Work and AI (Keywords: work, like, time, ai, even)
-- AI and multilingual content (Keywords: ai, like, que, even, people)
-- AI discussions (Keywords: ai, like, people, get, feel)
-- AI governance (Keywords: gen, ai, banned, get, like)
-- AI and art (Keywords: ai, people, art, like, get)
-- Life reflections (Keywords: like, even, feel, would, ai)
-- French content (Keywords: je, de, que, et, ai)
-- Social relationships (Keywords: like, ai, feel, know, friends)
-- Technology complaints (Keywords: ai, like, fucking, hate, get)
+1. General English content (ai, like, people, feel, know, etc.)
+2. French language content (je, de, que, et, ai, en, pas, etc.)
 
-**Example Posts**:
-- "Electronics/gadgets have reached an average consumer standstill"
-- "No, I don't bleeping want Siri…"
-- "AI Text Detectors are gonna be the death of me."
+This method primarily separated the dataset by language rather than creating nuanced topic clusters, suggesting that language was the strongest signal in the embedding space.
 
-## Final Comparison and Analysis
+## 4. BERTopic Analysis
 
-### Topics Discovered by Each Method
+**Method**: Used contextual embeddings from BERT combined with dimensionality reduction and clustering to identify topics.
 
-- **Word Frequency Analysis**: Identified common terms but not topics; showed prevalence of emotional language and personal references
-- **TF-IDF + K-Means**: Discovered 10 distinct topics including general discussions, emotional expression, social commentary, work-related issues, personal relationships, and French content
-- **Word2Vec + HDBSCAN**: Found only 2 major clusters primarily differentiated by language (English vs. French)
-- **BERTopic**: Similar to Word2Vec, detected 2 clusters mainly separated by language
-- **LDA**: Discovered 10 nuanced topics, particularly effective at finding AI-related discussions across different contexts (art, technology, ethics, governance)
+**Topics Found**:
+1. General English content
+2. French language content
 
-### Clarity and Usefulness of Topics
+Similar to Word2Vec, BERTopic primarily separated content by language, suggesting that with the default parameters, language differences were the most salient feature.
 
-- **Word Frequency Analysis**: Clear but limited usefulness - gives basic vocabulary overview without context
-- **TF-IDF + K-Means**: High clarity with distinct boundaries between topics; useful for identifying major themes including language differences
-- **Word2Vec + HDBSCAN**: Low thematic clarity but useful for language identification; didn't capture nuanced topics with default parameters
-- **BERTopic**: Similar to Word2Vec in this dataset; didn't provide expected granularity despite being an advanced method
-- **LDA**: High clarity and interpretability; very useful for identifying relationships between topics and understanding AI discussions across different contexts
+## 5. LDA (Latent Dirichlet Allocation)
 
-### Preferred Methods
+**Method**: Applied probabilistic topic modeling to discover hidden thematic structures.
 
-1. **LDA (Latent Dirichlet Allocation)** is preferred for its ability to:
-   - Discover nuanced topics with clear semantic coherence
-   - Show how AI discussions span multiple contexts (art, technology, ethics)
-   - Provide interpretable word groups that make intuitive sense
-   - Reveal relationships between topics
+**Topics Found**:
+1. General life emotions (like, know, want, life, feel)
+2. Work and AI (work, ai, job, time)
+3. AI and multilingual content (ai, que, de)
+4. AI and feelings (ai, people, feel, think)
+5. Gen AI discussions (gen, ai, alpha, banned)
+6. AI and art (ai, art, people, make)
+7. Feelings and life (feel, life, would, time)
+8. French content (je, de, que, et)
+9. Social relationships (friends, people, time)
+10. Technology complaints (ai, fucking, hate, tech)
 
-2. **TF-IDF + K-Means** is also highly effective for:
-   - Creating clear topic boundaries with distinct separation
-   - Computational efficiency compared to more advanced methods
-   - Identifying major thematic clusters including language differences
-   - Finding distinctive terms for each topic
+LDA successfully identified more nuanced topics within the dataset, particularly revealing the prominence of AI-related discussions across multiple contexts.
 
-The simplest method (Word Frequency Analysis) provided a useful foundation, while the neural embedding methods (Word2Vec and BERTopic) would likely require parameter tuning to reach their full potential with this dataset.
+## Comparison of Methods
 
-Overall, the multi-method approach was most valuable, with each technique revealing different aspects of the Reddit discussions. 
+Each method offered different perspectives on the Reddit data:
+
+- **Word Frequency Analysis**: Simple but lacks context; good for quick overview
+- **TF-IDF + K-Means**: Effective at finding distinct topic clusters with clear boundaries
+- **Word2Vec + HDBSCAN**: Good at identifying major language differences, but didn't find nuanced topics
+- **BERTopic**: Similar to Word2Vec in this dataset, primarily separated by language
+- **LDA**: Most effective at identifying nuanced topics across the dataset
+
+## Key Findings
+
+1. **AI is a dominant topic** across Reddit discussions, appearing in various contexts including art, technology concerns, and ethical discussions
+2. **Emotional expression** is very common, with words like "feel," "like," and "want" appearing frequently
+3. **Multi-language content** is present, with French being a significant secondary language
+4. **Personal relationships** and struggles are common themes
+5. **Technology complaints** form a distinct topic cluster
+
+## Preferred Methods
+
+For this Reddit dataset, the most effective methods were:
+
+1. **TF-IDF + K-Means**: For its ability to identify distinct topic clusters
+2. **LDA**: For its nuanced topic discovery across the dataset
+
+These methods were particularly well-suited for social media text analysis because they could handle the short, informal nature of posts while still identifying meaningful patterns.
+
+## Conclusion
+
+The multi-method approach provided comprehensive insights into the Reddit dataset. Each method revealed different aspects of the underlying topic structure, with LDA and TF-IDF + K-Means offering the most interpretable results. The analysis reveals that Reddit posts in this dataset primarily focus on personal experiences, AI technology, relationships, and emotional expression. 
