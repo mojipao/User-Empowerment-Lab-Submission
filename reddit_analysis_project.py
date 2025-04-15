@@ -772,10 +772,7 @@ if __name__ == '__main__':
     analyzer.bertopic_analysis()       # Advanced Technique 1
     analyzer.lda_analysis()            # Advanced Technique 2
     
-    # Generate final report comparing all methods
-    analyzer.generate_final_report()
-    
-    # Generate enhanced summary with example posts
-    analyzer.generate_enhanced_summary()
+    # Generate report
+    analyzer.generate_enhanced_summary()  
     
     print("Analysis complete! Results saved to 'reddit_analysis_results' directory.") 
