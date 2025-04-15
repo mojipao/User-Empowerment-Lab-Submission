@@ -724,11 +724,11 @@ class RedditTopicAnalysis:
         # Method Comparison
         summary += "## Comparison of Methods\n\n"
         summary += "Each method offered different perspectives on the Reddit data:\n\n"
-        summary += "- **Word Frequency Analysis**: Simple but lacks context; good for quick overview\n"
-        summary += "- **TF-IDF + K-Means**: Effective at finding distinct topic clusters with clear boundaries\n"
-        summary += "- **Word2Vec + HDBSCAN**: Good at identifying major language differences, but didn't find nuanced topics\n"
-        summary += "- **BERTopic**: Similar to Word2Vec in this dataset, primarily separated by language\n"
-        summary += "- **LDA**: Most effective at identifying nuanced topics across the dataset\n\n"
+        summary += "- **Word Frequency Analysis**: Simple but lacks context; good for quick overview. Revealed emotional and subjective language (\"like,\" \"feel,\" \"want\") dominates Reddit discussions but couldn't connect these words into meaningful topics.\n\n"
+        summary += "- **TF-IDF + K-Means**: Effective at finding distinct topic clusters with clear boundaries. Uniquely identified specific conversation areas like \"Family relationships,\" \"Art and creativity,\" and \"Male-focused topics\" with highly interpretable clusters. These topics were particularly useful for understanding different discussion communities within Reddit.\n\n"
+        summary += "- **Word2Vec + HDBSCAN**: Good at identifying major language differences (English vs. French content), but didn't find nuanced topics within those languages. The resulting clusters were clear but less useful for detailed analysis compared to other methods.\n\n"
+        summary += "- **BERTopic**: Similar to Word2Vec in this dataset, primarily separated by language rather than content topics. While technically sophisticated, it didn't provide additional insight beyond language separation for this particular dataset.\n\n"
+        summary += "- **LDA**: Most effective at identifying nuanced topics across the dataset. Uniquely discovered specific AI-related subtopics (\"AI and feelings,\" \"AI and art\") and multilingual content patterns that other methods missed. These topics were both clear and highly useful for understanding the range of AI discussions across Reddit.\n\n"
         
         # Key Findings
         summary += "## Key Findings\n\n"
@@ -741,9 +741,9 @@ class RedditTopicAnalysis:
         # Preferred Methods
         summary += "## Preferred Methods\n\n"
         summary += "For this Reddit dataset, the most effective methods were:\n\n"
-        summary += "1. **TF-IDF + K-Means**: For its ability to identify distinct topic clusters\n"
-        summary += "2. **LDA**: For its nuanced topic discovery across the dataset\n\n"
-        summary += "These methods were particularly well-suited for social media text analysis because they could handle the short, informal nature of posts while still identifying meaningful patterns.\n\n"
+        summary += "1. **TF-IDF + K-Means**: For its ability to identify distinct topic clusters with clear boundaries. This method excelled at finding intuitive, human-interpretable topics that accurately reflected different conversation domains on Reddit. The topics were concrete enough to be immediately useful for content categorization or community analysis.\n\n"
+        summary += "2. **LDA**: For its nuanced topic discovery across the dataset. LDA demonstrated superior ability to detect subtle thematic differences, particularly in AI-related discussions. It was especially valuable for identifying cross-cutting themes that appeared in multiple contexts, providing deeper analytical insight.\n\n"
+        summary += "These methods were particularly well-suited for social media text analysis because they could handle the short, informal nature of posts while still identifying meaningful patterns. TF-IDF + K-Means provided clearer separation between distinct communities, while LDA better captured the nuanced, overlapping nature of discussion topics.\n\n"
         
         # Conclusion
         summary += "## Conclusion\n\n"
